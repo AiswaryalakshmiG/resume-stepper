@@ -1,34 +1,46 @@
-<mat-stepper orientation="horizontal" labelPosition="bottom" #stepper>
+<mat-stepper orientation="horizontal" labelPosition="bottom" #stepper [linear]="isLinear">
   <mat-step>
     <form [formGroup]="personalInformation">
-      <h2>Fill your Personal Informations</h2>
+      <h2>Fill your Personal Information</h2>
       <ng-template matStepLabel>Personal Information</ng-template>
       <mat-form-field>
         <mat-label>Full Name</mat-label>
-        <input matInput fromControlName="fullname" required>
+        <input matInput formControlName="fullname" required>
+        <mat-error *ngIf="personalInformation.get('fullname')?.hasError('required')">
+          Full Name is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput fromControlName="email" required>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="personalInformation.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Phone</mat-label>
-        <input matInput fromControlName="phone" required>
+        <input matInput formControlName="phone" required>
+        <mat-error *ngIf="personalInformation.get('phone')?.hasError('required')">
+          Phone is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>LinkedIn</mat-label>
-        <input matInput fromControlName="linkedin" required>
+        <input matInput formControlName="linkedin" required>
+        <mat-error *ngIf="personalInformation.get('linkedin')?.hasError('required')">
+          LinkedIn is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Address</mat-label>
-        <textarea row="3" matInput fromControlName="address"></textarea>
+        <textarea rows="3" matInput formControlName="address"></textarea>
       </mat-form-field>
       <br>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperNext aria-label="Next">Next</button>
     </form>
   </mat-step>
 
@@ -38,12 +50,11 @@
       <ng-template matStepLabel>Objective</ng-template>
       <mat-form-field>
         <mat-label>Career Objective</mat-label>
-        <textarea matInput rows="3" fromControlName="objective"></textarea>
+        <textarea matInput rows="3" formControlName="objective"></textarea>
       </mat-form-field>
       <br>
-      <button mat-button matStepperPrevious>Back</button>
-      <br>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious aria-label="Back">Back</button>
+      <button mat-button matStepperNext aria-label="Next">Next</button>
     </form>
   </mat-step>
 
@@ -54,26 +65,37 @@
       <mat-form-field>
         <mat-label>Degree</mat-label>
         <input matInput formControlName="degree" required>
+        <mat-error *ngIf="education.get('degree')?.hasError('required')">
+          Degree is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Institution</mat-label>
         <input matInput formControlName="institution" required>
+        <mat-error *ngIf="education.get('institution')?.hasError('required')">
+          Institution is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Year of Passing</mat-label>
         <input matInput formControlName="year" required>
+        <mat-error *ngIf="education.get('year')?.hasError('required')">
+          Year of Passing is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Percentage</mat-label>
         <input matInput formControlName="percentage" required>
+        <mat-error *ngIf="education.get('percentage')?.hasError('required')">
+          Percentage is required
+        </mat-error>
       </mat-form-field>
       <br>
-      <button mat-button matStepperPrevious>Back</button>
-      <br>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious aria-label="Back">Back</button>
+      <button mat-button matStepperNext aria-label="Next">Next</button>
     </form>
   </mat-step>
 
@@ -84,47 +106,63 @@
       <mat-form-field>
         <mat-label>Job Title</mat-label>
         <input matInput formControlName="role" required>
+        <mat-error *ngIf="experiences.get('role')?.hasError('required')">
+          Job Title is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Company Name</mat-label>
         <input matInput formControlName="companyName" required>
+        <mat-error *ngIf="experiences.get('companyName')?.hasError('required')">
+          Company Name is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Duration</mat-label>
-        <input matInput formContrlName="duration" required>
+        <input matInput formControlName="duration" required>
+        <mat-error *ngIf="experiences.get('duration')?.hasError('required')">
+          Duration is required
+        </mat-error>
       </mat-form-field>
       <br>
-      <button mat-button matStepperPrevious>Back</button>
-      <br>
-      <button mat-button matStepperNext>Next</button>
+      <button mat-button matStepperPrevious aria-label="Back">Back</button>
+      <button mat-button matStepperNext aria-label="Next">Next</button>
     </form>
   </mat-step>
+
   <mat-step>
     <form [formGroup]="project">
+      <h2>Add Your Project</h2>
       <ng-template matStepLabel>Project</ng-template>
       <mat-form-field>
         <mat-label>Project Title</mat-label>
         <input matInput formControlName="title" required>
+        <mat-error *ngIf="project.get('title')?.hasError('required')">
+          Project Title is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Project Description</mat-label>
         <input matInput formControlName="description" required>
+        <mat-error *ngIf="project.get('description')?.hasError('required')">
+          Project Description is required
+        </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
         <mat-label>Technologies Used</mat-label>
         <input matInput formControlName="tech" required>
+        <mat-error *ngIf="project.get('tech')?.hasError('required')">
+          Technologies Used are required
+        </mat-error>
       </mat-form-field>
       <br>
-      <button mat-button matStepperPrevious>Back</button>
-      <br>
-      <button mat-button (click)="submit()">submit</button><br>
+      <button mat-button matStepperPrevious aria-label="Back">Back</button>
+      <button mat-button (click)="submit()" aria-label="Submit">Submit</button>
       <button mat-button (click)="downloadPdf()">Download</button>
-
     </form>
   </mat-step>
-
 </mat-stepper>
