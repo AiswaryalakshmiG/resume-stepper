@@ -10,7 +10,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
-  showData={}
+  title="stepper";
+
       constructor(private fb :FormBuilder){}
   personalInformation=this.fb.group({
     fullname:['', Validators.required],
@@ -42,28 +43,26 @@ export class AppComponent  {
     description:['', Validators.required],
     tech:['', Validators.required],
   });
-  skills=this.fb.group({
-
-  });
 
   submit(){
-    if(
-    this.personalInformation.valid&&
-    this.objective.valid&&
-    this.education.valid&&
-    this.experiences.valid&&
-    this.project.valid&&
-    this.skills.valid)
-    this.showData={
-      pernalinfo:this.personalInformation.value,
-      objective:this.objective.value,
-      edu:this.education.value,
-      experience:this.education.value,
-      proj:this.project.value,
-      skill:this.skills.value
-    }
-    console.log(this.showData);
+    console.log(this.personalInformation.value);
+    console.log(this.objective.value);
+    console.log(this.education.value);
+    console.log(this.experiences.value);
+    console.log(this.project.value);
   }
-
-
+  downloadPdf(){
+    const docDefinition = {
+    content:[
+      {text:'RESUME',},
+      {text:'personal Information',style:'subheading'},
+      // {
+      //   ul:[
+      //     'Name': this.personalInformation.value,
+      //   ]
+      // }
+    ]
+  };
+  pdfMake.createPdf(docDefinition).open();
+}
 }

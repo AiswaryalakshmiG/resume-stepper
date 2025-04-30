@@ -1,10 +1,10 @@
-<mat-stepper orientation="horizontal" labelPosition="bottom"  #stepper>
+<mat-stepper orientation="horizontal" labelPosition="bottom" #stepper>
   <mat-step>
     <form [formGroup]="personalInformation">
       <h2>Fill your Personal Informations</h2>
       <ng-template matStepLabel>Personal Information</ng-template>
       <mat-form-field>
-        <mat-label >Full Name</mat-label>
+        <mat-label>Full Name</mat-label>
         <input matInput fromControlName="fullname" required>
       </mat-form-field>
       <br>
@@ -25,30 +25,30 @@
       <br>
       <mat-form-field>
         <mat-label>Address</mat-label>
-        <textarea  row="3" matInput fromControlName="address"></textarea>
+        <textarea row="3" matInput fromControlName="address"></textarea>
       </mat-form-field>
       <br>
-     <button mat-button matStepperNext>Next</button>
-      </form>
+      <button mat-button matStepperNext>Next</button>
+    </form>
   </mat-step>
 
   <mat-step>
     <form [formGroup]="objective">
       <h2>Create your Objective</h2>
-    <ng-template matStepLabel>Objective</ng-template>
-    <mat-form-field>
-      <mat-label>Career Objective</mat-label>
-      <textarea matInput rows="3" fromControlName="objective"></textarea>
-    </mat-form-field>
-    <br>
-    <button mat-button matStepperPrevious>Back</button>
-    <br>
-   <button mat-button matStepperNext>Next</button>
-  </form>
+      <ng-template matStepLabel>Objective</ng-template>
+      <mat-form-field>
+        <mat-label>Career Objective</mat-label>
+        <textarea matInput rows="3" fromControlName="objective"></textarea>
+      </mat-form-field>
+      <br>
+      <button mat-button matStepperPrevious>Back</button>
+      <br>
+      <button mat-button matStepperNext>Next</button>
+    </form>
   </mat-step>
 
   <mat-step>
-    <form [formGroup]="education" >
+    <form [formGroup]="education">
       <h2>Fill your Educational Details</h2>
       <ng-template matStepLabel>Education</ng-template>
       <mat-form-field>
@@ -105,54 +105,26 @@
     <form [formGroup]="project">
       <ng-template matStepLabel>Project</ng-template>
       <mat-form-field>
-      <mat-label>Project Title</mat-label>
-      <input matInput formControlName="title" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Project Description</mat-label>
-      <input matInput formControlName="description" required>
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <mat-label>Technologies Used</mat-label>
-      <input matInput formControlName="tech" required>
-    </mat-form-field>
-    <br>
-    <button mat-button matStepperPrevious>Back</button>
+        <mat-label>Project Title</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
       <br>
-      <button mat-button matStepperNext>Next</button>
+      <mat-form-field>
+        <mat-label>Project Description</mat-label>
+        <input matInput formControlName="description" required>
+      </mat-form-field>
       <br>
+      <mat-form-field>
+        <mat-label>Technologies Used</mat-label>
+        <input matInput formControlName="tech" required>
+      </mat-form-field>
+      <br>
+      <button mat-button matStepperPrevious>Back</button>
+      <br>
+      <button mat-button (click)="submit()">submit</button><br>
+      <button mat-button (click)="downloadPdf()">Download</button>
 
     </form>
- </mat-step>
-    <mat-step>
-      <form [formGroup]="skills">   
-         <ng-template matStepLabel >Skills</ng-template>
-      <h3>Add Your Skills</h3>
-      <mat-checkbox>Java</mat-checkbox>
-      <br>
-      <mat-checkbox>Angular</mat-checkbox>
-      <br>
-      <mat-checkbox>HTML</mat-checkbox>
-      <br>
-      <mat-checkbox>CSS</mat-checkbox>
-      <br>
-      <mat-checkbox>Js</mat-checkbox>
-      <br>
-      <mat-checkbox>Git</mat-checkbox>
-      <br>
-      <mat-checkbox>MYSQL</mat-checkbox>
-      <br>
-      <mat-checkbox>POSTGRESQL</mat-checkbox>
-      <br>
-      <mat-checkbox>Spring</mat-checkbox>
-      <br>
-     <button mat-button matStepperPrevious>Back</button>
-      <br>
-      <button mat-button matStepperNext>Next</button>
-      <br>
-      <button mat-button (click)="submit()">submit</button>
-    </form>
-    </mat-step>
+  </mat-step>
+
 </mat-stepper>
